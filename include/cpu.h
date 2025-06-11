@@ -2,6 +2,24 @@
     #define _EMUL_GAMEBOY_CPU_H_
     #include <stdint.h>
 
+    ///////////////////////////////////////////////
+    /// @brief define for the flags
+    ///    Bit: 7   6   5   4   3   2   1   0
+    ///       ┌───┬───┬───┬───┬───┬───┬───┬───┐
+    ///  F  = │ Z │ N │ H │ C │ 0 │ 0 │ 0 │ 0 │
+    ///       └───┴───┴───┴───┴───┴───┴───┴───┘
+    ///       ↑   ↑   ↑   ↑
+    ///       │   │   │   └──► Carry Flag (C) - Bit 4 (0x10)
+    ///       │   │   └──────► Half Carry Flag (H) - Bit 5 (0x20)
+    ///       │   └──────────► Subtract Flag (N) - Bit 6 (0x40)
+    ///       └──────────────► Zero Flag (Z) - Bit 7 (0x80)
+    ///////////////////////////////////////////////
+    #define FLAG_Z 0x80  // Zero
+    #define FLAG_N 0x40  // Subtract
+    #define FLAG_H 0x20  // Half Carry
+    #define FLAG_C 0x10  // Carry
+    #define GET_FLAG(f, rv) ((f & rv) != 0) // get the flag value
+
 //////////////////////////////////////////////////////////////
 /// @brief The Game Boy has a set of registers
 ///        that are crucial for its operation, including

@@ -14,7 +14,8 @@ RM ?= rm -f
 
 all: $(NAME)
 
-UT_SRC	=	tests/test_reg.c
+UT_SRC	=	tests/test_reg.c		\
+			tests/test_get_flag.c
 UT_NAME	=	unit_tests
 UT_FLAGS=	--coverage -lcriterion
 tests_run:
