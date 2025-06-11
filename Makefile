@@ -1,4 +1,13 @@
-SRC = 	./src/main.c
+SRC_DIR	=	src
+
+EXECUTE	=	execute_function.c
+
+MMU		=	mmu_read8.c			\
+			mmu_write8.c
+
+SRC = 	$(addprefix $(SRC_DIR)/execute/, $(EXECUTE))	\
+		$(addprefix $(SRC_DIR)/mmu/, $(MMU))			\
+		$(SRC_DIR)/main.c
 
 NAME = bin
 
